@@ -293,6 +293,227 @@
             background-color: white;
         }
 
+        .alarm-container {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .alarm-toggle-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: #9ca3af;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            border-radius: 0.375rem;
+        }
+
+        .alarm-toggle-button:hover {
+            background-color: #f3f4f6;
+            color: #16a34a;
+        }
+
+        .alarm-toggle-button.has-alarm {
+            color: #16a34a;
+        }
+
+        .alarm-remove-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.25rem;
+            color: #ef4444;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            border-radius: 0.25rem;
+        }
+
+        .alarm-remove-button:hover {
+            background-color: #fee2e2;
+            color: #dc2626;
+        }
+
+        .alarm-fields {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            flex: 1;
+        }
+
+        .alarm-input {
+            padding: 0.4rem 0.6rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            color: #374151;
+            outline: none;
+            background-color: white;
+        }
+
+        .alarm-input:focus {
+            border-color: #16a34a;
+        }
+
+        .alarm-button {
+            padding: 0.4rem 0.8rem;
+            background-color: #16a34a;
+            color: white;
+            border: none;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .alarm-button:hover {
+            background-color: #15803d;
+        }
+
+        .alarm-button.remove {
+            background-color: #ef4444;
+        }
+
+        .alarm-button.remove:hover {
+            background-color: #dc2626;
+        }
+
+        .alarm-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: #16a34a;
+        }
+
+        .alarm-icon {
+            color: #16a34a;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-icon {
+            font-size: 3rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .modal-task {
+            font-size: 1.125rem;
+            color: #374151;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: #f9fafb;
+            border-radius: 0.5rem;
+            border-left: 4px solid #16a34a;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: flex-end;
+        }
+
+        .modal-button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .modal-button.primary {
+            background-color: #16a34a;
+            color: white;
+        }
+
+        .modal-button.primary:hover {
+            background-color: #15803d;
+        }
+
+        .modal-button.secondary {
+            background-color: #f3f4f6;
+            color: #374151;
+        }
+
+        .modal-button.secondary:hover {
+            background-color: #e5e7eb;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .alarm-active {
+            animation: pulse 2s infinite;
+        }
+
         .task-actions {
             display: flex;
             gap: 0.5rem;
@@ -306,7 +527,7 @@
             cursor: pointer;
             padding: 0.5rem;
             transition: color 0.2s;
-            display: flex;
+            display: none;
             align-items: center;
             font-size: 1.2rem;
             font-weight: bold;
@@ -314,6 +535,40 @@
 
         .move-button:hover {
             color: #16a34a;
+        }
+
+        .pin-button {
+            background: none;
+            border: none;
+            color: #9ca3af;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            border-radius: 0.375rem;
+        }
+
+        .pin-button:hover {
+            color: #f59e0b;
+            background-color: #fef3c7;
+        }
+
+        .pin-button.pinned {
+            color: #f59e0b;
+        }
+
+        .wip-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.125rem 0.5rem;
+            background-color: #fef3c7;
+            color: #d97706;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+            border: 1px solid #fde68a;
         }
 
         .delete-button {
@@ -412,6 +667,48 @@
         let currentPriority = 'normal';
         let currentFilter = 'all';
         let editingTaskId = null;
+        let alarmCheckInterval = null;
+        let audioContext = null;
+        let openAlarmIds = new Set();
+
+        // Criar contexto de áudio para o beep
+        function initAudio() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        // Tocar som de alarme (beep)
+        function playAlarmSound() {
+            initAudio();
+            
+            // Tocar 3 beeps
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    oscillator.frequency.value = 880;
+                    oscillator.type = 'sine';
+                    
+                    gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
+                    
+                    oscillator.start(audioContext.currentTime);
+                    oscillator.stop(audioContext.currentTime + 0.2);
+                }, i * 300);
+            }
+        }
+
+        // Solicitar permissão para notificações
+        function requestNotificationPermission() {
+            if ('Notification' in window && Notification.permission === 'default') {
+                Notification.requestPermission();
+            }
+        }
 
         // Carregar tarefas do localStorage
         function loadTasks() {
@@ -420,6 +717,8 @@
                 tasks = JSON.parse(saved);
                 renderTasks();
             }
+            startAlarmChecker();
+            requestNotificationPermission();
         }
 
         // Salvar tarefas no localStorage
@@ -517,10 +816,201 @@
             renderTasks();
         }
 
+        // Adicionar alarme à tarefa
+        function setAlarm(id) {
+            const dateInput = document.getElementById(`alarm-date-${id}`);
+            const timeInput = document.getElementById(`alarm-time-${id}`);
+            
+            if (dateInput && timeInput && dateInput.value && timeInput.value) {
+                const task = tasks.find(t => t.id === id);
+                if (task) {
+                    task.alarmDate = dateInput.value;
+                    task.alarmTime = timeInput.value;
+                    task.alarmTriggered = false;
+                    saveTasks();
+                    renderTasks();
+                }
+            }
+        }
+
+        // Remover alarme
+        function removeAlarm(id) {
+            const task = tasks.find(t => t.id === id);
+            if (task) {
+                delete task.alarmDate;
+                delete task.alarmTime;
+                delete task.alarmTriggered;
+                saveTasks();
+                renderTasks();
+            }
+        }
+
+        // Alternar exibição dos campos de alarme
+        function toggleAlarmFields(id) {
+            if (openAlarmIds.has(id)) {
+                openAlarmIds.delete(id);
+            } else {
+                openAlarmIds.add(id);
+            }
+            renderTasks();
+        }
+
+        // Alternar pin (fixar no topo)
+        function togglePin(id) {
+            const task = tasks.find(t => t.id === id);
+            if (task) {
+                task.pinned = !task.pinned;
+                if (task.pinned) {
+                    // Mover para o topo quando fixar
+                    const maxOrder = Math.max(...tasks.map(t => t.order || 0));
+                    task.order = maxOrder + 1;
+                }
+                saveTasks();
+                renderTasks();
+            }
+        }
+
+        // Verificar alarmes
+        function checkAlarms() {
+            const now = new Date();
+            
+            tasks.forEach(task => {
+                if (task.alarmDate && task.alarmTime && !task.alarmTriggered && !task.completed) {
+                    const alarmDateTime = new Date(`${task.alarmDate}T${task.alarmTime}`);
+                    
+                    if (now >= alarmDateTime) {
+                        task.alarmTriggered = true;
+                        saveTasks();
+                        showAlarmModal(task);
+                        playAlarmSound();
+                        
+                        // Notificação do navegador
+                        if ('Notification' in window && Notification.permission === 'granted') {
+                            new Notification('⏰ Alarme de Tarefa!', {
+                                body: task.text,
+                                icon: '🔔'
+                            });
+                        }
+                    }
+                }
+            });
+        }
+
+        // Iniciar verificação de alarmes
+        function startAlarmChecker() {
+            if (alarmCheckInterval) {
+                clearInterval(alarmCheckInterval);
+            }
+            // Verificar a cada 10 segundos
+            alarmCheckInterval = setInterval(checkAlarms, 10000);
+            // Verificar imediatamente
+            checkAlarms();
+        }
+
+        // Mostrar modal de alarme
+        function showAlarmModal(task) {
+            const modal = document.createElement('div');
+            modal.className = 'modal-overlay';
+            modal.innerHTML = `
+                <div class="modal-content alarm-active">
+                    <div class="modal-header">
+                        <div class="modal-icon">⏰</div>
+                        <h2 class="modal-title">Alarme de Tarefa!</h2>
+                    </div>
+                    <div class="modal-task">
+                        ${task.text}
+                    </div>
+                    <div class="modal-buttons">
+                        <button class="modal-button secondary" onclick="dismissAlarm(${task.id})">
+                            Adiar 5 min
+                        </button>
+                        <button class="modal-button primary" onclick="completeFromAlarm(${task.id})">
+                            Marcar como Concluída
+                        </button>
+                        <button class="modal-button secondary" onclick="closeAlarmModal()">
+                            Fechar
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // Fechar modal de alarme
+        function closeAlarmModal() {
+            const modal = document.querySelector('.modal-overlay');
+            if (modal) {
+                modal.remove();
+            }
+        }
+
+        // Adiar alarme
+        function dismissAlarm(id) {
+            const task = tasks.find(t => t.id === id);
+            if (task) {
+                const now = new Date();
+                now.setMinutes(now.getMinutes() + 5);
+                
+                const year = now.getFullYear();
+                const month = String(now.getMonth() + 1).padStart(2, '0');
+                const day = String(now.getDate()).padStart(2, '0');
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                
+                task.alarmDate = `${year}-${month}-${day}`;
+                task.alarmTime = `${hours}:${minutes}`;
+                task.alarmTriggered = false;
+                saveTasks();
+                renderTasks();
+            }
+            closeAlarmModal();
+        }
+
+        // Completar tarefa pelo alarme
+        function completeFromAlarm(id) {
+            toggleTask(id);
+            closeAlarmModal();
+        }
+
+        // Formatar data/hora para exibição
+        function formatAlarmDateTime(date, time) {
+            const alarmDate = new Date(`${date}T${time}`);
+            const now = new Date();
+            const diff = alarmDate - now;
+            
+            const options = { 
+                day: '2-digit', 
+                month: '2-digit', 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            };
+            const formatted = alarmDate.toLocaleString('pt-BR', options);
+            
+            if (diff < 0) {
+                return `${formatted} (expirado)`;
+            } else if (diff < 3600000) { // menos de 1 hora
+                const minutes = Math.floor(diff / 60000);
+                return `${formatted} (em ${minutes} min)`;
+            } else if (diff < 86400000) { // menos de 1 dia
+                const hours = Math.floor(diff / 3600000);
+                return `${formatted} (em ${hours}h)`;
+            }
+            
+            return formatted;
+        }
+
         // Renderizar tarefas
         function renderTasks() {
             const container = document.getElementById('tasksContainer');
-            const filteredTasks = tasks.filter(task => {
+            
+            // Ordenar: tarefas fixadas primeiro, depois por order
+            const sortedTasks = [...tasks].sort((a, b) => {
+                if (a.pinned && !b.pinned) return -1;
+                if (!a.pinned && b.pinned) return 1;
+                return (b.order || 0) - (a.order || 0);
+            });
+            
+            const filteredTasks = sortedTasks.filter(task => {
                 if (currentFilter === 'all') return true;
                 return task.priority === currentFilter;
             });
@@ -552,23 +1042,86 @@
                             `}
                         </button>
                         
-                        ${editingTaskId === task.id ? `
-                            <input 
-                                type="text" 
-                                id="edit-input-${task.id}"
-                                class="task-edit-input" 
-                                value="${task.text.replace(/"/g, '&quot;')}"
-                                onblur="saveEdit(${task.id})"
-                                onkeydown="if(event.key === 'Enter') saveEdit(${task.id}); if(event.key === 'Escape') cancelEdit();"
-                            />
-                        ` : `
-                            <p class="task-text ${task.completed ? 'completed' : ''}" ondblclick="startEdit(${task.id})" title="Clique duas vezes para editar">
-                                ${task.text}
-                            </p>
-                        `}
+                        <div style="flex: 1;">
+                            ${editingTaskId === task.id ? `
+                                <input 
+                                    type="text" 
+                                    id="edit-input-${task.id}"
+                                    class="task-edit-input" 
+                                    value="${task.text.replace(/"/g, '&quot;')}"
+                                    onblur="saveEdit(${task.id})"
+                                    onkeydown="if(event.key === 'Enter') saveEdit(${task.id}); if(event.key === 'Escape') cancelEdit();"
+                                />
+                            ` : `
+                                <div style="display: flex; align-items: center;">
+                                    <p class="task-text ${task.completed ? 'completed' : ''}" ondblclick="startEdit(${task.id})" title="Clique duas vezes para editar">
+                                        ${task.text}
+                                    </p>
+                                    ${task.pinned ? `<span class="wip-badge">WIP</span>` : ''}
+                                </div>
+                            `}
+                            
+                            ${!task.completed ? `
+                                <div class="alarm-container">
+                                    <button 
+                                        class="alarm-toggle-button ${task.alarmDate && task.alarmTime ? 'has-alarm' : ''}" 
+                                        onclick="toggleAlarmFields(${task.id})"
+                                        title="${task.alarmDate && task.alarmTime ? 'Alarme definido' : 'Definir alarme'}"
+                                    >
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="13" r="7"></circle>
+                                            <polyline points="12 10 12 13 14 15"></polyline>
+                                            <path d="M16.51 17.35l-.35 3.83a2 2 0 0 1-2 1.82H9.83a2 2 0 0 1-2-1.82l-.35-3.83m.01-10.7l1.09-1.09a2 2 0 0 1 2.83 0l1.09 1.09"></path>
+                                        </svg>
+                                        ${task.alarmDate && task.alarmTime ? `
+                                            <span style="font-size: 0.75rem; margin-left: 0.25rem;">
+                                                ${formatAlarmDateTime(task.alarmDate, task.alarmTime)}
+                                            </span>
+                                        ` : ''}
+                                    </button>
+                                    
+                                    ${openAlarmIds.has(task.id) ? `
+                                        <div class="alarm-fields">
+                                            ${task.alarmDate && task.alarmTime ? `
+                                                <button class="alarm-remove-button" onclick="removeAlarm(${task.id})" title="Remover alarme">
+                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                                    </svg>
+                                                </button>
+                                            ` : `
+                                                <input 
+                                                    type="date" 
+                                                    id="alarm-date-${task.id}"
+                                                    class="alarm-input"
+                                                    min="${new Date().toISOString().split('T')[0]}"
+                                                />
+                                                <input 
+                                                    type="time" 
+                                                    id="alarm-time-${task.id}"
+                                                    class="alarm-input"
+                                                />
+                                                <button class="alarm-button" onclick="setAlarm(${task.id})">
+                                                    Definir
+                                                </button>
+                                            `}
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            ` : ''}
+                        </div>
                         
                         <div class="task-actions">
-                            <button class="move-button" onclick="moveToTop(${task.id})" title="Mover para o topo">↑</button>
+                            <button 
+                                class="pin-button ${task.pinned ? 'pinned' : ''}" 
+                                onclick="togglePin(${task.id})" 
+                                title="${task.pinned ? 'Desafixar tarefa' : 'Fixar tarefa no topo'}"
+                            >
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="${task.pinned ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 17v5"></path>
+                                    <path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16h14v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"></path>
+                                </svg>
+                            </button>
                             <button class="delete-button" onclick="deleteTask(${task.id})">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <polyline points="3 6 5 6 21 6"></polyline>
